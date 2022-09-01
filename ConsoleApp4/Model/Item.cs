@@ -11,7 +11,6 @@
             Coste = coste;
         }
 
-
         public string Nombre { get; }
         public int Fuerza { get; }
         public int Vida { get; }
