@@ -14,17 +14,13 @@ do
 
             Console.Clear();
 
-            Console.Write("Nombre: ");
-            var name = Console.ReadLine();
+            Console.Write("Nombre: "); var name = Console.ReadLine();
+         
+            Console.Write("Precio: "); var precio = Convert.ToInt32(Console.ReadLine());
 
-            Console.Write("Precio: ");
-            var precio = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Stock: "); var stock = Convert.ToInt32(Console.ReadLine());
 
-            Console.Write("Stock: ");
-            var stock = Convert.ToInt32(Console.ReadLine());
-
-            Console.Write("Url: ");
-            var url = Console.ReadLine();
+            Console.Write("Url: "); var url = Console.ReadLine();
 
 
             Producto P = new Producto()
@@ -46,6 +42,25 @@ do
 
 
             break;
+
+
+        case "2":
+            Console.Clear();
+            using (var context = new AppDbContext())
+            {
+                var ProductosGuardados = context.tblProductos.ToList();
+                foreach (var item in ProductosGuardados)
+                {
+                    Console.WriteLine($"Id: {item.Id} | Name: {item.Name} | " +
+                        $"Precio: {item.Precio} | Stock: {item.Stock} | " +
+                        $"Url: {item.UrlImagen}");
+                }
+                Console.WriteLine("Productos Listados...");
+                Console.ReadLine();
+            }
+            
+            break;
+
         default:
             break;
     }
