@@ -6,6 +6,9 @@ namespace ConsoleAppEntityFramework.Model
     {
 
         public DbSet<Producto> tblProductos { get; set; }
+        public DbSet<Cliente> tblClientes { get; set; }
+        public DbSet<Venta> tblVentas { get; set; }
+        public DbSet<DetalleVenta> tblDetallesVentas { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

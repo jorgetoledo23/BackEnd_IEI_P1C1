@@ -14,5 +14,8 @@ namespace ConsoleAppEntityFramework.Model
         public int Stock{ get; set; }
         public string UrlImagen{ get; set; }
 
+        //Fk
+        public List<DetalleVenta> DetalleVenta { get; set; }
+
     }
 }
