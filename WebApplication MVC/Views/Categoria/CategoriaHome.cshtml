@@ -1,0 +1,40 @@
+﻿@model List<Categoria>
+<div class="card text-center">
+    <div class="card-body">
+        <h5 class="card-title">Administracion de Categorias</h5>
+        <p class="card-text">Crea, Edita o Elimina las Categorias del Sistema!</p>
+        <a asp-action="CategoriaCreate"
+            class="btn btn-success"><i class="fa-solid fa-plus m-1"></i>Crear Nueva Categoria</a>
+    </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id Categoria</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var categoria in Model)
+        {
+            <tr>
+                <td>@categoria.CategoriaId</td>
+                <td>@categoria.Name</td>
+                <td>@categoria.Descripcion</td>
+                <td>
+                    <i class="fa-regular fa-pen-to-square m-1"></i>
+                    <a 
+                        asp-controller="Categoria" 
+                        asp-action="EliminarCategoria"
+                        asp-route-Id="@categoria.CategoriaId"
+                        onclick="return confirm('¿Estas Seguro?')"
+                    ><i class="fa-solid fa-circle-minus m-1"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
