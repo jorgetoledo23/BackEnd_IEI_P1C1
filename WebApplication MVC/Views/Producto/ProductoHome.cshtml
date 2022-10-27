@@ -1,0 +1,49 @@
+﻿@model List<Producto>
+<div class="card text-center">
+    <div class="card-body">
+        <h5 class="card-title">Administracion de Productos</h5>
+        <p class="card-text">Crea, Edita o Elimina los Productos del Sistema!</p>
+        <a asp-action="ProductoCreate"
+           class="btn btn-success"><i class="fa-solid fa-plus m-1"></i>Crear Nuevo Producto</a>
+    </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id Producto</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Imagen</th>
+            <th>Categoria</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var producto in Model)
+        {
+            <tr>
+                <td>@producto.ProductoId</td>
+                <td>@producto.Name</td>
+                <td>@producto.Descripcion</td>
+                <td>@producto.Precio.ToString("C")</td>
+                <td>@producto.Stock</td>
+                <td><img class="img-fluid" src="@producto.UrlImagen" width="100" height="100" /></td>
+                <td>@producto.Categoria.Name</td>
+                <td>
+                    <i class="fa-regular fa-pen-to-square m-1"></i>
+                    <a 
+                        asp-controller="Producto" 
+                        asp-action="EliminarProducto"
+                        asp-route-Id="@producto.ProductoId"
+                        onclick="return confirm('¿Estas Seguro?')">
+                        <i class="fa-solid fa-circle-minus m-1"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

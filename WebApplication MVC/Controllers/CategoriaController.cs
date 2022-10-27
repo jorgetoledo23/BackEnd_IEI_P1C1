@@ -24,6 +24,22 @@ namespace WebApplication_MVC.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult CategoriaCreate(Categoria C)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Categorias.Add(C);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(CategoriaHome));
+            }
+            else
+            {
+                ModelState.AddModelError("", "Ha ocurrido un error desconocido!");
+                return View(C);
+            }
+        }
+
 
 
         public RedirectToActionResult EliminarCategoria(int Id)
