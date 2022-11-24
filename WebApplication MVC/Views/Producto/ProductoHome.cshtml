@@ -1,10 +1,28 @@
 ﻿@model List<Producto>
+@{
+    bool esAdministrador = false;
+}
+@if (User.Identity.IsAuthenticated)
+{
+    var claims = User.Claims;
+    foreach (var c in claims)
+    {
+        if (c.Value == "Jefe")
+        {
+            esAdministrador = true;
+        }
+    }
+}
 <div class="card text-center">
     <div class="card-body">
         <h5 class="card-title">Administracion de Productos</h5>
         <p class="card-text">Crea, Edita o Elimina los Productos del Sistema!</p>
-        <a asp-action="ProductoCreate"
+        
+        @if(esAdministrador){
+                <a asp-action="ProductoCreate"
            class="btn btn-success"><i class="fa-solid fa-plus m-1"></i>Crear Nuevo Producto</a>
+    
+        }
     </div>
 </div>
 

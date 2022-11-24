@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebApplication_MVC.Models;
 
 namespace WebApplication_MVC.Controllers
 {
+    [Authorize(Roles = "Administrador, JefeBodega, Vendedor")]
     public class HomeController : Controller
     {
         public IActionResult Index()

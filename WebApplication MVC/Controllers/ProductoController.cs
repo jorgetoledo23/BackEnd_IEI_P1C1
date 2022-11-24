@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 using WebApplication_MVC.Models;
 
 namespace WebApplication_MVC.Controllers
 {
+    [Authorize(Roles = "SuperAdministrador")]
     public class ProductoController : Controller
     {
         private readonly AppDbContext _context;
@@ -24,6 +27,7 @@ namespace WebApplication_MVC.Controllers
             return View(Productos);
         }
 
+        //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> ProductoCreate()
         {
             var Categorias = await _context

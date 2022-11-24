@@ -1,0 +1,78 @@
+﻿@model LoginViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login In - SistemaWeb</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SistemaWeb.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway:500,800" rel="stylesheet">
+</head>
+<body style="font-family: 'Raleway';">
+    <div class="container">
+        <main role="main" class="pb-3">
+            <form asp-action="LoginIn" method="post">
+
+                <div class="row justify-content-center">
+
+                    <div class="col-md-4 shadow text-center p-3 mt-3">
+
+                        <img class="img-fluid m-3" width="200" src="https://miro.medium.com/max/300/1*JY-JZfN8GW_OsJoVrI7wBg.png" />
+
+                        <div class="form-group m-3">
+                            <input asp-for="Username"  class="form-control text-center" placeholder="Username" />
+                            <span  class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group m-3 ">
+                            <input asp-for="Password" type="password"  class="form-control text-center" placeholder="Password" />
+                            <span  class="text-danger"></span>
+                        </div>
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="justify-content-center" id="loading" style="display:none;">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group m-3">
+                            <input type="submit" value="Iniciar Sesion" class="btn btn-primary col-12" id="btnLoginIn">
+                        </div>
+
+                        <div class="form-group m-3 text-center">
+                            <a asp-action="#">Olvidaste tus Credenciales? Haz Click Aqui!</a>
+                        </div>
+
+                    </div>
+
+                </div>
+           </form>
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted text-center">
+        <div class="container">
+            &copy; 2022 - Back End 2022 - INACAP CURICO
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        const btnLoginIn = document.getElementById("btnLoginIn");
+        btnLoginIn.addEventListener("click", () =>{
+            const divLoading = document.getElementById("loading");
+            divLoading.style.display = "flex";
+        })
+        </script>
+
+</body>
+</html>
